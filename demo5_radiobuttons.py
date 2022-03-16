@@ -20,39 +20,26 @@ class KILO_Converter:
         self.rb2 = tkinter.Radiobutton(self.top_frame, text = "Option 1", variable = self.radio_var, value = 20)
         self.rb3 = tkinter.Radiobutton(self.top_frame, text = "Option 1", variable = self.radio_var, value = 30)
 
-        self.prompt_label = tkinter.Label(
-            self.top_frame, text="Enter a distance in Kilometers "
-        )
+        #pack the 
 
-        self.kilo_entry = tkinter.Entry(self.top_frame, width=10)
+     
 
-        self.prompt_label.pack(side="left")
-        self.kilo_entry.pack(side="left")
+        self.top_frame.pack(side = ("top")
+        self.bottom_frame.pack(side = ("top")
 
-        self.descr_label = tkinter.Label(self.mid_frame, text="Converted to miles: ")
+        self.okbutton = tkinter.Button(self.bottom_frame, text = "OK", command = self.show_choice)
+        self.reserbutton = tkinter.Button(self.bottom_frame, text = "Reset", command = radio_var.set(10))
+        self.quit_button = tkinter.Button(self.main_window, text="Quit", command=self.main_window.destroy)
 
-        self.miles_variable = tkinter.StringVar()
-
-        self.miles_label = tkinter.Label(self.mid_frame, text=self.miles_variable)
-
-        self.descr_label.pack(side="left")
-        self.miles_label.pack(side="left")
-
-        self.top_frame.pack(side="top")
-        self.mid_frame.pack(side="top")
-        self.bottom_frame.pack(side="top")
-
-        self.calc_button = tkinter.Button(
-            self.main_window, text="Convert", command=self.convert
-        )
-        self.quit_button = tkinter.Button(
-            self.main_window, text="Quit", command=self.main_window.destroy
-        )
-
-        self.calc_button.pack(side="left")
-        self.quit_button.pack(side="right")
+        self.ok_button.pack(side = "left")
+        self.reset_button.pack(side = "left") 
+        self.quit_button.pack(side = "left")
 
         tkinter.mainloop()
+
+    def show_choice(self):
+        tkinter.messagebox.showinfo("Selection","You have ")
+        
 
     def convert(self):
         kilo = float(self.kilo_entry.get())
