@@ -12,6 +12,14 @@ class KILO_Converter:
         self.top_frame = tkinter.Frame(self.main_window)
         self.bottom_frame = tkinter.Frame(self.main_window)
 
+        self.radio_var = tkinter.IntVar()
+
+        #set the intVar object to 1 
+        self.radio_var.set(10)
+        self.rb1 = tkinter.Radiobutton(self.top_frame, text = "Option 1", variable = self.radio_var, value = 10)
+        self.rb2 = tkinter.Radiobutton(self.top_frame, text = "Option 1", variable = self.radio_var, value = 20)
+        self.rb3 = tkinter.Radiobutton(self.top_frame, text = "Option 1", variable = self.radio_var, value = 30)
+
         self.prompt_label = tkinter.Label(
             self.top_frame, text="Enter a distance in Kilometers "
         )
@@ -21,7 +29,17 @@ class KILO_Converter:
         self.prompt_label.pack(side="left")
         self.kilo_entry.pack(side="left")
 
+        self.descr_label = tkinter.Label(self.mid_frame, text="Converted to miles: ")
+
+        self.miles_variable = tkinter.StringVar()
+
+        self.miles_label = tkinter.Label(self.mid_frame, text=self.miles_variable)
+
+        self.descr_label.pack(side="left")
+        self.miles_label.pack(side="left")
+
         self.top_frame.pack(side="top")
+        self.mid_frame.pack(side="top")
         self.bottom_frame.pack(side="top")
 
         self.calc_button = tkinter.Button(
@@ -41,11 +59,7 @@ class KILO_Converter:
 
         miles = round(kilo * 0.6214, 2)
 
-        tkinter.messagebox.showinfo(
-            " Results ", str(kilo) + " Kilometers is equal to " + str(miles)
-        )
-
-        tkinter.mainloop()
+        self.miles_var.set(miles)
 
 
 kilo_conv = KILO_Converter()
