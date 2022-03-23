@@ -14,39 +14,47 @@ class KILO_Converter:
 
         self.radio_var = tkinter.IntVar()
 
-        #set the intVar object to 1 
-        self.radio_var.set(10)
-        self.rb1 = tkinter.Radiobutton(self.top_frame, text = "Option 1", variable = self.radio_var, value = 10)
-        self.rb2 = tkinter.Radiobutton(self.top_frame, text = "Option 1", variable = self.radio_var, value = 20)
-        self.rb3 = tkinter.Radiobutton(self.top_frame, text = "Option 1", variable = self.radio_var, value = 30)
+        # Select default buttons
+        # self.rb2.select()
 
-        #pack the 
+        self.rb1 = tkinter.Radiobutton(
+            self.top_frame, text="option1", variable=self.radio_var, value=10
+        )
 
-     
+        self.rb2 = tkinter.Radiobutton(
+            self.top_frame, text="option2", variable=self.radio_var, value=20
+        )
 
-        self.top_frame.pack(side = ("top")
-        self.bottom_frame.pack(side = ("top")
+        self.rb3 = tkinter.Radiobutton(
+            self.top_frame, text="option3", variable=self.radio_var, value=30
+        )
 
-        self.okbutton = tkinter.Button(self.bottom_frame, text = "OK", command = self.show_choice)
-        self.reserbutton = tkinter.Button(self.bottom_frame, text = "Reset", command = radio_var.set(10))
-        self.quit_button = tkinter.Button(self.main_window, text="Quit", command=self.main_window.destroy)
+        self.rb2.select()
 
-        self.ok_button.pack(side = "left")
-        self.reset_button.pack(side = "left") 
-        self.quit_button.pack(side = "left")
+        # Packing the buttons
+        self.rb1.pack()
+        self.rb2.pack()
+        self.rb3.pack()
+
+        self.top_frame.pack(side="top")
+        self.bottom_frame.pack(side="top")
+
+        self.ok_button = tkinter.Button(
+            self.bottom_frame, text="OK", command=self.show_choice
+        )
+
+        self.reset_button = tkinter.Button(
+            self.bottom_frame, text="Reset", command=self.rb1.select
+        )
+        self.ok_button.pack(side="left")
+        self.reset_button.pack(side="left")
 
         tkinter.mainloop()
 
     def show_choice(self):
-        tkinter.messagebox.showinfo("Selection","You have ")
-        
-
-    def convert(self):
-        kilo = float(self.kilo_entry.get())
-
-        miles = round(kilo * 0.6214, 2)
-
-        self.miles_var.set(miles)
+        tkinter.messagebox.showinfo(
+            "Selection", "You have selected Option " + str(self.radio_var.get())
+        )
 
 
 kilo_conv = KILO_Converter()
